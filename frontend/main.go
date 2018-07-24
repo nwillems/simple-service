@@ -18,7 +18,7 @@ func readyz(c echo.Context) error {
 	return c.JSON(http.StatusOK, "ready\n")
 }
 
-func main() {
+func StartServer() {
 	e := echo.New()
 
 	e.Any("/", handleReq())
@@ -26,4 +26,8 @@ func main() {
 	e.GET("/readyz", readyz)
 
 	e.Start(":9001")
+}
+
+func main() {
+	StartServer()
 }
